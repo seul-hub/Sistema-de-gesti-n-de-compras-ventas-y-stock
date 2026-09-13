@@ -19,7 +19,7 @@ namespace DATOS
         public PresupuestoVenta Buscar (int IdPresupuestoVenta)
         {
 
-            PresupuestoVenta buscarPresupuesto = null ;/* variable que empieza en null */
+            PresupuestoVenta buscarPresupuesto = null ;
 
             try
             {
