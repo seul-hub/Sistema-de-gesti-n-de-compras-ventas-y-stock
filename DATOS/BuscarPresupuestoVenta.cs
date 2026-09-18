@@ -19,8 +19,7 @@ namespace DATOS
         public PresupuestoVenta Buscar (int IdPresupuestoVenta)
         {
 
-            PresupuestoVenta buscarPresupuesto = null ;
-
+            PresupuestoVenta buscarPresupuesto = null;
             try
             {
                 SqlCommand comando = new SqlCommand("sp_buscar_presupuesto_venta", conexion.ObtenerConexion());

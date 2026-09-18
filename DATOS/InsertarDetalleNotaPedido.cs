@@ -16,7 +16,7 @@ namespace DATOS
         {
             try
             {
-                SqlCommand comando = new SqlCommand("sp_alta_nota_pedido", conexion.ObtenerConexion());
+                SqlCommand comando = new SqlCommand("sp_alta_detalles_notas_pedido", conexion.ObtenerConexion());
 
                 comando.CommandType = CommandType.StoredProcedure;
               
