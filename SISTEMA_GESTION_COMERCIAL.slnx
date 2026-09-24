@@ -3,4 +3,5 @@
   <Project Path="ENTIDADES/ENTIDADES.csproj" />
   <Project Path="LOGICA/LOGICA.csproj" />
   <Project Path="SISTEMA/SISTEMA.csproj" Id="e8fe2f35-30cf-4fc4-8d8e-409c707d23a6" />
+  <Project Path="VISTA/VISTA.csproj" Id="9c8f6723-8e03-4abe-a686-40f861834a51" />
 </Solution>

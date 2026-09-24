@@ -17,7 +17,7 @@ namespace DATOS
         {
             try
             {
-               SqlCommand comando =new SqlCommand("sp_alta_aviso_mercaderia_preparada" , conexion.ObtenerConexion());
+               SqlCommand comando =new SqlCommand("sp_alta_aviso_mercaderia_preparada", conexion.ObtenerConexion());
                 comando.CommandType=CommandType.StoredProcedure;
                 comando.Parameters.AddWithValue("@id_nota_pedido", aviso.IdNotaPedido);
                 comando.Parameters.AddWithValue("@id_usuario", aviso.IdUsuario);

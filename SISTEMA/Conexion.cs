@@ -8,7 +8,7 @@ namespace SISTEMA
         public Conexion()
         {
             conexion = new SqlConnection("Server=DESKTOP-7MSL8IO;" +
-                "Database=SISTEMA_GESTION_USUARIO1;" +
+                "Database=Presupuestos_y_pedidos_de_venta;" +
                 "Trusted_Connection=True;" +
                 "TrustServerCertificate=True;");
         }
