@@ -30,18 +30,26 @@
         {
             cmbestado = new ComboBox();
             txtfecha = new TextBox();
-            txtnotapedido = new TextBox();
             txtidcliente = new TextBox();
             txtisusuario = new TextBox();
             btnagregar = new Button();
             btncancelar = new Button();
-            label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
             txtpresupuestoventa = new TextBox();
+            txtprecio = new TextBox();
+            txtcantidad = new TextBox();
+            txtidproducto = new TextBox();
+            btnagregarlinea = new Button();
+            label1 = new Label();
+            label7 = new Label();
+            label8 = new Label();
+            dataGridView1 = new DataGridView();
+            btnagregartodo = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // cmbestado
@@ -58,13 +66,6 @@
             txtfecha.Name = "txtfecha";
             txtfecha.Size = new Size(121, 23);
             txtfecha.TabIndex = 1;
-            // 
-            // txtnotapedido
-            // 
-            txtnotapedido.Location = new Point(129, 31);
-            txtnotapedido.Name = "txtnotapedido";
-            txtnotapedido.Size = new Size(100, 23);
-            txtnotapedido.TabIndex = 2;
             // 
             // txtidcliente
             // 
@@ -99,15 +100,6 @@
             btncancelar.Text = "Cancelar";
             btncancelar.UseVisualStyleBackColor = true;
             btncancelar.Click += btncancelar_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(27, 31);
-            label1.Name = "label1";
-            label1.Size = new Size(85, 15);
-            label1.TabIndex = 7;
-            label1.Text = "IdNotasPedido";
             // 
             // label2
             // 
@@ -161,28 +153,112 @@
             txtpresupuestoventa.Size = new Size(100, 23);
             txtpresupuestoventa.TabIndex = 13;
             // 
+            // txtprecio
+            // 
+            txtprecio.Location = new Point(344, 86);
+            txtprecio.Name = "txtprecio";
+            txtprecio.Size = new Size(121, 23);
+            txtprecio.TabIndex = 14;
+            // 
+            // txtcantidad
+            // 
+            txtcantidad.Location = new Point(317, 57);
+            txtcantidad.Name = "txtcantidad";
+            txtcantidad.Size = new Size(121, 23);
+            txtcantidad.TabIndex = 15;
+            // 
+            // txtidproducto
+            // 
+            txtidproducto.Location = new Point(344, 117);
+            txtidproducto.Name = "txtidproducto";
+            txtidproducto.Size = new Size(121, 23);
+            txtidproducto.TabIndex = 16;
+            // 
+            // btnagregarlinea
+            // 
+            btnagregarlinea.Location = new Point(256, 143);
+            btnagregarlinea.Name = "btnagregarlinea";
+            btnagregarlinea.Size = new Size(95, 23);
+            btnagregarlinea.TabIndex = 17;
+            btnagregarlinea.Text = "AgregarLinea";
+            btnagregarlinea.UseVisualStyleBackColor = true;
+            btnagregarlinea.Click += btnagregarlinea_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(256, 60);
+            label1.Name = "label1";
+            label1.Size = new Size(55, 15);
+            label1.TabIndex = 18;
+            label1.Text = "Cantidad";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(256, 89);
+            label7.Name = "label7";
+            label7.Size = new Size(82, 15);
+            label7.TabIndex = 19;
+            label7.Text = "PrecioUnitario";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(256, 121);
+            label8.Name = "label8";
+            label8.Size = new Size(66, 15);
+            label8.TabIndex = 20;
+            label8.Text = "IdProducto";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(256, 175);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(238, 113);
+            dataGridView1.TabIndex = 21;
+            // 
+            // btnagregartodo
+            // 
+            btnagregartodo.Location = new Point(357, 143);
+            btnagregartodo.Name = "btnagregartodo";
+            btnagregartodo.Size = new Size(95, 23);
+            btnagregartodo.TabIndex = 22;
+            btnagregartodo.Text = "AgregarTodo";
+            btnagregartodo.UseVisualStyleBackColor = true;
+            btnagregartodo.Click += btnagregartodo_Click;
+            // 
             // FrmAltaNotaPedido
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(294, 309);
+            ClientSize = new Size(506, 305);
+            Controls.Add(btnagregartodo);
+            Controls.Add(dataGridView1);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Controls.Add(label1);
+            Controls.Add(btnagregarlinea);
+            Controls.Add(txtidproducto);
+            Controls.Add(txtcantidad);
+            Controls.Add(txtprecio);
             Controls.Add(txtpresupuestoventa);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(label1);
             Controls.Add(btncancelar);
             Controls.Add(btnagregar);
             Controls.Add(txtisusuario);
             Controls.Add(txtidcliente);
-            Controls.Add(txtnotapedido);
             Controls.Add(txtfecha);
             Controls.Add(cmbestado);
             Name = "FrmAltaNotaPedido";
             Text = "FrmAltaNotaPedido";
             Load += FrmAltaNotaPedido_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -191,17 +267,24 @@
 
         private ComboBox cmbestado;
         private TextBox txtfecha;
-        private TextBox txtnotapedido;
         private TextBox txtidcliente;
         private TextBox txtisusuario;
         private Button btnagregar;
         private Button btncancelar;
-        private Label label1;
         private Label label2;
         private Label label3;
         private Label label4;
         private Label label5;
         private Label label6;
         private TextBox txtpresupuestoventa;
+        private TextBox txtprecio;
+        private TextBox txtcantidad;
+        private TextBox txtidproducto;
+        private Button btnagregarlinea;
+        private Label label1;
+        private Label label7;
+        private Label label8;
+        private DataGridView dataGridView1;
+        private Button btnagregartodo;
     }
 }

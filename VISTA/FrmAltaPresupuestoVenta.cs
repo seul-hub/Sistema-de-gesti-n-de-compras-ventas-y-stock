@@ -21,6 +21,14 @@ namespace VISTA
         {
             InitializeComponent();
         }
+         private InsertarDetallePresupuestoVentaLogica insertarDetalleLogica = new InsertarDetallePresupuestoVentaLogica();
+         private InsertarPresupuestoVentaLogica insertar = new InsertarPresupuestoVentaLogica();
+        private InsertarDetallePresupuestoVenta insertarDetalle = new InsertarDetallePresupuestoVenta();
+        private List<DetallePresupuestoVenta> detalle = new List<DetallePresupuestoVenta>();
+
+        ErrorProvider error1 = new ErrorProvider();
+
+        private ErrorProvider error = new ErrorProvider();
 
         private void FrmAltaPresupuestoVenta_Load(object sender, EventArgs e)
         {
@@ -29,8 +37,6 @@ namespace VISTA
             comboBox1.Items.Add("Rechazado");
             txtFecha.Text = DateTime.Now.ToString();
         }
-        private InsertarPresupuestoVentaLogica insertar = new InsertarPresupuestoVentaLogica();
-        private ErrorProvider error = new ErrorProvider();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             error.Clear();
@@ -49,6 +55,8 @@ namespace VISTA
                 presupuestoventa.IdCliente = Convert.ToInt32(txtidcliente.Text);
                 presupuestoventa.IdUsuario = Convert.ToInt32(txtusuario.Text);
 
+                fechaUsada = presupuestoventa.FechaEmision;
+
                 insertar.Insertar(presupuestoventa);
                 MessageBox.Show("datos ingresados");
             }
@@ -56,16 +64,13 @@ namespace VISTA
             {
                 MessageBox.Show(ex.Message);
             }
+           
         }
 
         private void btncancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        private InsertarDetallePresupuestoVenta insertarDetalle = new InsertarDetallePresupuestoVenta();
-        ErrorProvider error1 = new ErrorProvider();
-        private List<DetallePresupuestoVenta> detalle = new List<DetallePresupuestoVenta>();
-
         private void btnagregarlinea_Click(object sender, EventArgs e)
         {
             error1.Clear();
@@ -100,23 +105,19 @@ namespace VISTA
                 MessageBox.Show(ex.Message);
             }
         }
+        private DateTime fechaUsada;
 
         private void btnagregartodo_Click(object sender, EventArgs e)
         {
-            InsertarDetallePresupuestoVenta insertarDetalle = new InsertarDetallePresupuestoVenta();
             ListarPresupuestoVentaLogica listar = new ListarPresupuestoVentaLogica();
-            DetallePresupuestoVenta detallePresupuestoVenta = null;
+            List<PresupuestoVenta> lista = listar.Listar(null);
+            PresupuestoVenta presupuestoEncontrado = lista.FirstOrDefault(detalle => detalle.FechaEmision == fechaUsada);
 
-            
-           
-            DetallePresupuestoVenta presupuestoEncontrado = listaCompleta.FirstOrDefault(detalle => detalle.FechaEmision == fechaUsada);
-
-            foreach (DetallePresupuestoVenta detalle in listar)
+            foreach(DetallePresupuestoVenta id in detalle)
             {
-                if (detalle.FechaEmision ==)
-                {
-                    presupuestoEncontrado = detalle; 
-                }
+                id.IdPresupuestoVenta = presupuestoEncontrado.IdPresupuestoVenta;
+                insertarDetalleLogica.Insertar(id);
+                MessageBox.Show("datos guardados");
             }
         }
     }

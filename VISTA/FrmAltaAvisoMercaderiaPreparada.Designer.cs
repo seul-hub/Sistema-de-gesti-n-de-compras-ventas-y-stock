@@ -122,6 +122,7 @@
             btncancelar.TabIndex = 9;
             btncancelar.Text = "Cancelar";
             btncancelar.UseVisualStyleBackColor = true;
+            btncancelar.Click += btncancelar_Click;
             // 
             // FrmAltaAvisoMercaderiaPreparada
             // 

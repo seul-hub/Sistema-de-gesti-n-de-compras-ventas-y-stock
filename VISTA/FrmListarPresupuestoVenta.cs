@@ -28,14 +28,25 @@ namespace VISTA
             ListarPresupuestoVentaLogica logica = new ListarPresupuestoVentaLogica();
             List<PresupuestoVenta> lista;
 
+            string estadoFiltro=null;
             if (cmbfiltroestado.Text == "Todos")
             {
-                lista = logica.Listar(null);
+                estadoFiltro = null;
             }
             else
             {
-                lista = logica.Listar(cmbfiltroestado.Text);
+                estadoFiltro = cmbfiltroestado.Text;
             }
+            int? idClienteFiltro;
+            if (string.IsNullOrWhiteSpace(txtfiltrocliente.Text))
+            {
+                idClienteFiltro = null;
+            }
+            else
+            {
+                idClienteFiltro = Convert.ToInt32(txtfiltrocliente.Text);
+            }
+            lista = logica.Listar(estadoFiltro, idClienteFiltro);
             dataGridView1.DataSource = lista;
         }
 

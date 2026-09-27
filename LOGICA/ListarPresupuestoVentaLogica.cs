@@ -11,9 +11,9 @@ namespace LOGICA
     public class ListarPresupuestoVentaLogica
     {
         private ListarPresupuestoVenta listar = new ListarPresupuestoVenta();
-        public List<PresupuestoVenta> Listar(string Estado)
+        public List<PresupuestoVenta> Listar(string Estado , int? IdCliente = null)
         {
-            return listar.Listar(Estado);
+            return listar.Listar(Estado , IdCliente);
         }
     }
 }

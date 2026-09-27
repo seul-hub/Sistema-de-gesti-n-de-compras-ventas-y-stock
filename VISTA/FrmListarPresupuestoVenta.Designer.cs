@@ -32,6 +32,7 @@
             btnactualizar = new Button();
             btncancelar = new Button();
             cmbfiltroestado = new ComboBox();
+            txtfiltrocliente = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -72,11 +73,19 @@
             cmbfiltroestado.Size = new Size(121, 23);
             cmbfiltroestado.TabIndex = 4;
             // 
+            // txtfiltrocliente
+            // 
+            txtfiltrocliente.Location = new Point(329, 30);
+            txtfiltrocliente.Name = "txtfiltrocliente";
+            txtfiltrocliente.Size = new Size(100, 23);
+            txtfiltrocliente.TabIndex = 5;
+            // 
             // FrmListarPresupuestoVenta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(444, 256);
+            Controls.Add(txtfiltrocliente);
             Controls.Add(cmbfiltroestado);
             Controls.Add(btncancelar);
             Controls.Add(btnactualizar);
@@ -86,6 +95,7 @@
             Load += FrmListarPresupuestoVenta_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -94,5 +104,6 @@
         private Button btnactualizar;
         private Button btncancelar;
         private ComboBox cmbfiltroestado;
+        private TextBox txtfiltrocliente;
     }
 }

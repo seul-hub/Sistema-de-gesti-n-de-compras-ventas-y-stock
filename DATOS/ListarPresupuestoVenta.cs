@@ -13,7 +13,7 @@ namespace DATOS
     public class ListarPresupuestoVenta
     {
         private Conexion conexion = new Conexion();
-        public List<PresupuestoVenta>Listar(string Estado)
+        public List<PresupuestoVenta>Listar(string Estado , int? IdCliente = null)
         {
             List<PresupuestoVenta> lista = new List<PresupuestoVenta>();
 
@@ -22,6 +22,14 @@ namespace DATOS
                 SqlCommand comando = new SqlCommand("sp_listar_presupuestos_venta", conexion.ObtenerConexion());
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.AddWithValue("@estado", Estado);
+                if (IdCliente.HasValue)
+                {
+                    comando.Parameters.AddWithValue("@id_cliente", IdCliente.Value);
+                }
+                else
+                {
+                    comando.Parameters.AddWithValue("@id_cliente", DBNull.Value);
+                }
                 conexion.AbrirConexion();
                 SqlDataReader reader = comando.ExecuteReader();
                 while(reader.Read())

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -23,15 +24,15 @@ namespace VISTA
         ErrorProvider error = new ErrorProvider();
         private void btnagregar_Click(object sender, EventArgs e)
         {
-          
+
             try
             {
-                AvisoMercaderiaPreparada aviso = new AvisoMercaderiaPreparada ();
+                AvisoMercaderiaPreparada aviso = new AvisoMercaderiaPreparada();
                 aviso.IdAvisosMercaderiaPreparada = Convert.ToInt32(txtidavisos.Text);
                 aviso.IdNotaPedido = Convert.ToInt32(txtidnota.Text);
-               aviso.IdUsuario = Convert.ToInt32(txtidusuario.Text);
+                aviso.IdUsuario = Convert.ToInt32(txtidusuario.Text);
                 aviso.FechaEmision = Convert.ToDateTime(txtfecha.Text);
-             
+
                 insertar.Insertar(aviso);
             }
 
@@ -40,11 +41,16 @@ namespace VISTA
                 MessageBox.Show(ex.Message);
             }
         }
-        
+
 
         private void FrmAltaAvisoMercaderiaPreparada_Load(object sender, EventArgs e)
         {
             txtfecha.Text = DateTime.Now.ToString();
+        }
+
+        private void btncancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
