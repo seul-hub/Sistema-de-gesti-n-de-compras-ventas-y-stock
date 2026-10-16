@@ -32,25 +32,25 @@ namespace VISTA
 
         private void FrmAltaPresupuestoVenta_Load(object sender, EventArgs e)
         {
-            comboBox1.Items.Add("Pendiente");
-            comboBox1.Items.Add("Aprobado");
-            comboBox1.Items.Add("Rechazado");
+            cmbestado.Items.Add("Pendiente");
+            cmbestado.Items.Add("Aprobado");
+            cmbestado.Items.Add("Rechazado");
             txtFecha.Text = DateTime.Now.ToString();
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             error.Clear();
             bool valido = true;
-            if (string.IsNullOrWhiteSpace(comboBox1.Text))
+            if (string.IsNullOrWhiteSpace(cmbestado.Text))
             {
-                error.SetError(comboBox1, "este campo es obligatorio");
+                error.SetError(cmbestado, "este campo es obligatorio");
                 valido = false;
             }
             if (!valido) return;
             try
             {
                 PresupuestoVenta presupuestoventa = new PresupuestoVenta();
-                presupuestoventa.Estado = Convert.ToString(comboBox1.Text);
+                presupuestoventa.Estado = Convert.ToString(cmbestado.Text);
                 presupuestoventa.FechaEmision = Convert.ToDateTime(txtFecha.Text);
                 presupuestoventa.IdCliente = Convert.ToInt32(txtidcliente.Text);
                 presupuestoventa.IdUsuario = Convert.ToInt32(txtusuario.Text);
@@ -109,16 +109,46 @@ namespace VISTA
 
         private void btnagregartodo_Click(object sender, EventArgs e)
         {
+            if (detalle.Count == 0)
+            {
+                MessageBox.Show("Agregue al menos una línea con el botón Agregar línea antes de guardar todo.");
+                return;
+            }
+
             ListarPresupuestoVentaLogica listar = new ListarPresupuestoVentaLogica();
             List<PresupuestoVenta> lista = listar.Listar(null);
-            PresupuestoVenta presupuestoEncontrado = lista.FirstOrDefault(detalle => detalle.FechaEmision == fechaUsada);
+            PresupuestoVenta presupuestoEncontrado = lista.FirstOrDefault(p => p.FechaEmision == fechaUsada);
 
-            foreach(DetallePresupuestoVenta id in detalle)
+            if (presupuestoEncontrado == null)
             {
-                id.IdPresupuestoVenta = presupuestoEncontrado.IdPresupuestoVenta;
-                insertarDetalleLogica.Insertar(id);
-                MessageBox.Show("datos guardados");
+                MessageBox.Show("Primero guarde el presupuesto con el botón Agregar, después cargue las líneas con Agregar línea y por último use Agregar todo.");
+                return;
             }
+
+            foreach (DetallePresupuestoVenta linea in detalle)
+            {
+                linea.IdPresupuestoVenta = presupuestoEncontrado.IdPresupuestoVenta;
+                insertarDetalleLogica.Insertar(linea);
+            }
+
+            Limpiar();
+            MessageBox.Show("Las líneas se guardaron correctamente.");
+        }
+
+        private void Limpiar()
+        {
+            txtcantidad.Clear();
+            txtidproducto.Clear();
+            txtidcliente.Clear();
+            txtusuario.Clear();
+            txtpreciounitario.Clear();
+            cmbestado.SelectedIndex = -1;
+
+            txtFecha.Text = DateTime.Now.ToString();
+            detalle.Clear();
+            dataGridView1.DataSource = null;
+
+            fechaUsada = DateTime.MinValue;
         }
     }
 }

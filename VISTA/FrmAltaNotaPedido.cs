@@ -52,7 +52,8 @@ namespace VISTA
                 notapedido.FechaEmision = Convert.ToDateTime(txtfecha.Text);
                 notapedido.Estado = Convert.ToString(cmbestado.Text);
                 notapedido.IdCliente = Convert.ToInt32(txtidcliente.Text);
-             
+                notapedido.IdUsuario = Convert.ToInt32(txtisusuario.Text);
+
                 if (string.IsNullOrWhiteSpace(txtpresupuestoventa.Text))
                 {
                     notapedido.IdPresupuestoVenta = null;
@@ -61,10 +62,12 @@ namespace VISTA
                 {
                     notapedido.IdPresupuestoVenta = Convert.ToInt32(txtpresupuestoventa.Text);
                 }
+
+                fechaUsada = notapedido.FechaEmision;
+
                 insertar.Insertar(notapedido);
                 MessageBox.Show("datos ingresados");
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -98,16 +101,48 @@ namespace VISTA
         private DateTime fechaUsada;
         private void btnagregartodo_Click(object sender, EventArgs e)
         {
+            if (detalles.Count == 0)
+            {
+                MessageBox.Show("Agregue al menos una línea con el botón Agregar línea antes de guardar todo.");
+                return;
+            }
+
             ListarNotaPedidoLogica listar = new ListarNotaPedidoLogica();
             List<NotaPedido> lista = listar.Listar(null);
-            NotaPedido presupuestoEncontrado = lista.FirstOrDefault(detalle => detalle.FechaEmision == fechaUsada);
+            NotaPedido notaEncontrada = lista.FirstOrDefault(n => n.FechaEmision == fechaUsada);
 
-            foreach (DetallesNotaPedido id in detalles)
+            if (notaEncontrada == null)
             {
-                id.IdNotaPedido = presupuestoEncontrado.IdNotasPedido;
-                insertarDetalle.Insertar(id);
-                MessageBox.Show("datos guardados");
+                MessageBox.Show("Primero guarde la nota con el botón Agregar, después cargue las líneas con Agregar línea y por último use Agregar todo.");
+                return;
             }
+
+            foreach (DetallesNotaPedido linea in detalles)
+            {
+                linea.IdNotaPedido = notaEncontrada.IdNotasPedido;
+                insertarDetalle.Insertar(linea);
+            }
+
+            Limpiar();
+            MessageBox.Show("Las líneas se guardaron correctamente.");
+        }
+
+        private void Limpiar()
+        {
+            txtcantidad.Clear();
+            txtprecio.Clear();
+            txtidproducto.Clear();
+            txtidcliente.Clear();
+            txtisusuario.Clear();
+            txtpresupuestoventa.Clear();
+            cmbestado.SelectedIndex = -1;
+
+            txtfecha.Text = DateTime.Now.ToString();
+
+            detalles.Clear();
+            dataGridView1.DataSource = null;
+
+            fechaUsada = DateTime.MinValue;
         }
     }
 }

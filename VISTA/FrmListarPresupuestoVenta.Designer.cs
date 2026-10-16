@@ -33,6 +33,8 @@
             btncancelar = new Button();
             cmbfiltroestado = new ComboBox();
             txtfiltrocliente = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -80,11 +82,31 @@
             txtfiltrocliente.Size = new Size(100, 23);
             txtfiltrocliente.TabIndex = 5;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(202, 12);
+            label1.Name = "label1";
+            label1.Size = new Size(42, 15);
+            label1.TabIndex = 6;
+            label1.Text = "estado";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(329, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(42, 15);
+            label2.TabIndex = 7;
+            label2.Text = "cliente";
+            // 
             // FrmListarPresupuestoVenta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(444, 256);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(txtfiltrocliente);
             Controls.Add(cmbfiltroestado);
             Controls.Add(btncancelar);
@@ -105,5 +127,7 @@
         private Button btncancelar;
         private ComboBox cmbfiltroestado;
         private TextBox txtfiltrocliente;
+        private Label label1;
+        private Label label2;
     }
 }

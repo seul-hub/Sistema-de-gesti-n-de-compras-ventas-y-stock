@@ -39,7 +39,7 @@
             label5 = new Label();
             btnAgregar = new Button();
             btncancelar = new Button();
-            comboBox1 = new ComboBox();
+            cmbestado = new ComboBox();
             txtcantidad = new TextBox();
             txtidproducto = new TextBox();
             txtpreciounitario = new TextBox();
@@ -145,13 +145,13 @@
             btncancelar.UseVisualStyleBackColor = true;
             btncancelar.Click += btncancelar_Click;
             // 
-            // comboBox1
+            // cmbestado
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(129, 96);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(100, 23);
-            comboBox1.TabIndex = 13;
+            cmbestado.FormattingEnabled = true;
+            cmbestado.Location = new Point(129, 96);
+            cmbestado.Name = "cmbestado";
+            cmbestado.Size = new Size(100, 23);
+            cmbestado.TabIndex = 13;
             // 
             // txtcantidad
             // 
@@ -243,7 +243,7 @@
             Controls.Add(txtpreciounitario);
             Controls.Add(txtidproducto);
             Controls.Add(txtcantidad);
-            Controls.Add(comboBox1);
+            Controls.Add(cmbestado);
             Controls.Add(btncancelar);
             Controls.Add(btnAgregar);
             Controls.Add(label5);
@@ -275,7 +275,7 @@
         private Label label5;
         private Button btnAgregar;
         private Button btncancelar;
-        private ComboBox comboBox1;
+        private ComboBox cmbestado;
         private TextBox txtcantidad;
         private TextBox txtidproducto;
         private TextBox txtpreciounitario;
