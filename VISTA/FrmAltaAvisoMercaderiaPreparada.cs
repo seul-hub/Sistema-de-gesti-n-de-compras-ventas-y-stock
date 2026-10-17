@@ -28,7 +28,6 @@ namespace VISTA
             try
             {
                 AvisoMercaderiaPreparada aviso = new AvisoMercaderiaPreparada();
-                aviso.IdAvisosMercaderiaPreparada = Convert.ToInt32(txtidavisos.Text);
                 aviso.IdNotaPedido = Convert.ToInt32(txtidnota.Text);
                 aviso.IdUsuario = Convert.ToInt32(txtidusuario.Text);
                 aviso.FechaEmision = Convert.ToDateTime(txtfecha.Text);
@@ -40,6 +39,7 @@ namespace VISTA
             {
                 MessageBox.Show(ex.Message);
             }
+            //MessageBox.Show("ya se ingresaron los datos");
         }
 
 

@@ -32,7 +32,7 @@ namespace DATOS
                     notapedido.Estado = Convert.ToString(reader["estado"]);
                     notapedido.IdCliente = Convert.ToInt32(reader["id_cliente"]);
                     notapedido.IdUsuario = Convert.ToInt32(reader["id_usuario"]);
-                    notapedido.IdPresupuestoVenta = Convert.ToInt32(reader["id_presupuesto_venta"]);
+                    notapedido.IdPresupuestoVenta = reader["id_presupuesto_venta"] == DBNull.Value ? null : (int?)Convert.ToInt32(reader["id_presupuesto_venta"]);
                 }
                 reader.Close();
             }
