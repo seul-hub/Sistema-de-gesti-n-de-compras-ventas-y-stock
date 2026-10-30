@@ -34,6 +34,8 @@
             btncancelar = new Button();
             cmbfiltro2 = new ComboBox();
             btnestado = new Button();
+            label1 = new Label();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -92,11 +94,31 @@
             btnestado.UseVisualStyleBackColor = true;
             btnestado.Click += btnestado_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 8);
+            label1.Name = "label1";
+            label1.Size = new Size(42, 15);
+            label1.TabIndex = 6;
+            label1.Text = "Estado";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(139, 8);
+            label2.Name = "label2";
+            label2.Size = new Size(96, 15);
+            label2.TabIndex = 7;
+            label2.Text = "Siguiente_Estado";
+            // 
             // FrmListarNotaPedido
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(434, 306);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(btnestado);
             Controls.Add(cmbfiltro2);
             Controls.Add(btncancelar);
@@ -108,6 +130,7 @@
             Load += FrmListarNotaPedido_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -118,5 +141,7 @@
         private Button btncancelar;
         private ComboBox cmbfiltro2;
         private Button btnestado;
+        private Label label1;
+        private Label label2;
     }
 }

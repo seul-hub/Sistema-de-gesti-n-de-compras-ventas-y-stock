@@ -64,8 +64,10 @@
             // 
             // txtfecha
             // 
+            txtfecha.Enabled = false;
             txtfecha.Location = new Point(126, 97);
             txtfecha.Name = "txtfecha";
+            txtfecha.ReadOnly = true;
             txtfecha.Size = new Size(118, 23);
             txtfecha.TabIndex = 5;
             // 

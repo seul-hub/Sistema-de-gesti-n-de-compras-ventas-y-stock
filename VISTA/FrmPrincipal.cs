@@ -58,5 +58,10 @@ namespace VISTA
             FrmReporteTiempoPromedio frm = new FrmReporteTiempoPromedio();
             frm.Show();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
